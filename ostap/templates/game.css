@@ -1,0 +1,57 @@
+
+.headers {
+  margin: auto;
+  width: 50%;
+  font-weight: bold;
+  font-size: 140%;
+}
+
+.diagrams {
+  text-align: center;
+}
+
+.diagram {
+  display: inline-block;
+  border: black solid 1px;
+  width: 412px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+.board {
+  border: white solid 4px;
+}
+
+.comments {
+}
+
+.played-move {
+  font-weight: bold;
+}
+
+.variant-move {
+  font-style: italic;
+  font-weight: bold;
+}
+
+.variant-score {
+  font-style: italic;
+  font-weight: normal;
+}
+
+.badge-e {
+  color: red;
+  font-size: 110%;
+}
+
+.badge-f {
+  color: darkblue;
+  font-size: 110%
+}
+
+.badge-h {
+  color: darkgrey;
+  font-size: 110%
+}

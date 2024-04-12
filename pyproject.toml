@@ -1,0 +1,31 @@
+[project]
+name = "ostap"
+description = "Ostap is a chess game analyzer"
+readme = "./README.md"
+license = {text = "GPLv3"}
+dynamic = ["version"]
+requires-python = ">=3.9"
+
+dependencies = [
+    "chess~=1.10",
+    "Jinja2~=3.1"
+]
+
+authors = [
+    {name = "Spyros Anastasopoulos", email = "winwasher@gmail.com"}
+]
+maintainers = [
+    {name = "Spyros Anastasopoulos", email = "winwasher@gmail.com"}
+]
+
+[project.urls]
+repository = "https://github.com/anastasop/ostap"
+
+[project.scripts]
+ostap = "ostap.cli:main"
+
+[build-system]
+requires = ["setuptools", "setuptools_scm"]
+
+[tool.setuptools_scm]
+write_to = "ostap/version.py"

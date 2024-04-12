@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial_scale=1"/>
+  <title>Ostap Analysis</title>
+  <style>
+  {% include 'game.css' %}
+  </style>
+</head>
+<body>
+
+<div class="headers">
+{{ headers['White'] }}&nbsp;-&nbsp;{{ headers['Black'] }}&nbsp;{{ headers['Result'] }}<br/>
+{{ headers['Event'] }}&nbsp;{{ headers['Date'] }}
+</div>
+
+{% set badge_tooltips = {
+  'e': 'This move is an error',
+  'f': 'The first choice is significantly better',
+  'h': 'Difficult position, the evaluation fluctuates'
+} %}
+
+
+{% macro move_played(fen, move) -%}
+  {% set fen_fields = fen.split() %}
+  {% set badge = badges[fen][0] %}
+  <span class="played-move badge-{{badge}}" title="{{badge_tooltips[badge]}}">{{fen_fields[5]}}{% if fen_fields[1] == 'b' %}...{% else %}&nbsp;{% endif %}{{move}}</span>&nbsp;|&nbsp;
+{%- endmacro %}
+
+<div class="diagrams">
+  {% for diagram in diagrams %}
+  {% set position = diagram[0] %}
+  {% set svg = diagram[1] %}
+  <div class="diagram">
+    <div class="board">{{ svg | safe }}</div>
+    <div class="comments">
+      {{ move_played(diagram[0].position.fen, position.move_played.san) }}
+      {% for variant in position.position.evaluations %}
+      <span class="variant-move">{{variant.move.san}}<span>&nbsp;<span class="variant-score">{{variant.score}}</span>
+      {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+</body>
+</html>
