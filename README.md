@@ -21,7 +21,7 @@ The chess tournament is chapter 34.
 
 ## Installation
 
-Ostap is a python applications. It has very few dependencies, namely [stockfish](https://stockfishchess.org),
+Ostap is a python application. It has very few dependencies, namely [stockfish](https://stockfishchess.org),
 [python-chess](https://python-chess.readthedocs.io/en/latest/) and [Jinja](https://jinja.palletsprojects.com/en/3.1.x/).
 You must have a stockfish executable in your PATH, see the site for instructions. The others are installed by pip.
 It needs python >= 3.9. Tested on FreeBSD 14 and Debian 12 with custom stockfish builds.
@@ -110,5 +110,5 @@ Released under the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.en.html).
 
 ## Bugs/TODO
 
-- add an options for naming the html files
-- add an options to save the analysis in JSON format
+- add an option for naming the html files
+- add an option to save the analysis in JSON format
