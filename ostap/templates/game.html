@@ -25,7 +25,9 @@
 {% macro move_played(fen, move) -%}
   {% set fen_fields = fen.split() %}
   {% set badge = badges[fen][0] %}
+  {% if move %}
   <span class="played-move badge-{{badge}}" title="{{badge_tooltips[badge]}}">{{fen_fields[5]}}{% if fen_fields[1] == 'b' %}...{% else %}&nbsp;{% endif %}{{move}}</span>&nbsp;|&nbsp;
+  {% endif %}
 {%- endmacro %}
 
 <div class="diagrams">

@@ -89,10 +89,17 @@ def evaluation(engine, board, analysis_options = ANALYSIS_OPTIONS):
 		multipv = analysis_options[ANALYSIS_OPTION_MULTIPV],
 		info = chess.engine.INFO_ALL)
 
+	# extract the notation for the move suggested by the engine in this info.
+	# final positions like mate, stalemate do not have move suggestions.
+	def move_suggested(info, board):
+		if 'pv' in info:
+			return Move(board.san(info['pv'][0]), info['pv'][0].uci())
+		return Move(None, None)
+
 	return Position(fen = board.fen(),
 		evaluations = [
 			Evaluation(info['score'].white().score(mate_score=1000)/100.0,
-			Move(board.san(info['pv'][0]), info['pv'][0].uci())) for info in infos])
+			move_suggested(info, board)) for info in infos])
 
 
 def errors(positions, threshold = ANALYSIS_THRESHOLD_ERROR):
